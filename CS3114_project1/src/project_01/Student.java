@@ -55,6 +55,7 @@ public class Student implements Comparable<Student> {
      * The method to give a score to the student
      * 
      * @param insertedScore
+     *            The score you want to assign to this student.
      */
     public void addScore(int insertedScore) {
         score = insertedScore;
@@ -71,13 +72,39 @@ public class Student implements Comparable<Student> {
 
     }
 
+
     /**
      * The method for comparing the last name with another student object.
-     * If the last name is the same, then comparing with the first name
+     * If the last name is the same, then comparing with the first name.
+     * 
+     * @param otherStudent
+     *            The other student that will be compared with this student.
      * 
      */
     @Override
-    public int compareTo(Student o) {
-        // TODO Auto-generated method stub
-        return 0;
-    }// End class
+    public int compareTo(Student otherStudent) {
+        // Compare the last name.
+        if (this.lastName.toUpperCase().compareTo(otherStudent.getLastName()
+            .toUpperCase()) < 0) {
+            return -1;
+        }
+        else if (this.lastName.toUpperCase().compareTo(otherStudent
+            .getLastName().toUpperCase()) > 0) {
+            return 1;
+        }
+        // If the last name is the same, then compare the first name.
+        else if (this.firstName.toUpperCase().compareTo(otherStudent
+            .getFirstName().toUpperCase()) < 0) {
+            return -1;
+        }
+        else if (this.firstName.toUpperCase().compareTo(otherStudent
+            .getFirstName().toUpperCase()) > 0) {
+            return 1;
+        }
+        // If the last name and first name are all the same.
+        else {
+            return 0;
+        }
+    }
+
+}// End class
